@@ -1,0 +1,598 @@
+/* ==========================================================================
+   1. VARIABLES ET RÉINITIALISATION (Thème clair par défaut & Mode Sombre)
+   ========================================================================== */
+:root {
+  /* Mode Clair */
+  --couleur-fond: #2d5a27;            /* Vert agricole pour le body */
+  --couleur-secondaire: #f9efc7;      /* Jaune agricole pour les sections */
+  --couleur-carte: #ffffff;           /* Fond de carte */
+  --couleur-texte: #ffffff;           /* Texte principal sur fond vert */
+  --couleur-texte-carte: #2c3e50;     /* Texte foncé pour les cartes claires */
+  --couleur-texte-secondaire: #4a4a4a;
+  --couleur-principale: #1e3f1a;      /* Vert foncé */
+  --couleur-principale-survol: #122810;
+  --couleur-accent: #f9a825;          /* Jaune accentué */
+  --couleur-bordure: #d4c896;
+  --couleur-entete: #ffffff;          /* Fond en-tête */
+  --couleur-texte-entete: #2c3e50;    /* Texte en-tête */
+  --ombre: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --transition: all 0.3s ease;
+}
+
+[data-theme="sombre"] {
+  /* Mode Sombre Adapté */
+  --couleur-fond: #121d11;            /* Vert très sombre pour le body */
+  --couleur-secondaire: #262316;      /* Jaune/Brun sombre équilibré */
+  --couleur-carte: #1e291d;           /* Cartes assombries */
+  --couleur-texte: #e8f5e9;           /* Texte clair lisible */
+  --couleur-texte-carte: #e8f5e9;     /* Texte clair pour cartes sombres */
+  --couleur-texte-secondaire: #a3c2a0;
+  --couleur-principale: #81c784;      /* Vert clair lumineux pour les titres */
+  --couleur-principale-survol: #66bb6a;
+  --couleur-accent: #fbc02d;
+  --couleur-bordure: #334431;
+  --couleur-entete: #1a2519;          /* Fond en-tête sombre */
+  --couleur-texte-entete: #e8f5e9;    /* Texte en-tête clair */
+  --ombre: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  line-height: 1.6;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.conteneur {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.bouton {
+  display: inline-block;
+  background-color: var(--couleur-accent);
+  color: #1e3f1a;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.bouton:hover {
+  background-color: #f57f17;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.titre-section {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--couleur-accent);
+  position: relative;
+}
+
+.titre-section::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--couleur-accent);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+/* Ajustement des titres dans les sections secondaires */
+.chiffres-cles .titre-section,
+.bloc-historique .titre-section {
+  color: var(--couleur-principale);
+}
+
+/* ==========================================================================
+   2. EN-TÊTE ET NAVIGATION
+   ========================================================================== */
+.entete {
+  background-color: var(--couleur-entete);
+  color: var(--couleur-texte-entete);
+  box-shadow: var(--ombre);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+
+.entete .conteneur {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
+
+.logo-marque {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-marque img {
+  height: 50px;
+  width: auto;
+}
+
+.logo-marque h3 {
+  color: var(--couleur-principale);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.commandes-navigation {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.liste-navigation {
+  display: flex;
+  gap: 25px;
+}
+
+.liste-navigation a {
+  font-weight: 600;
+  color: var(--couleur-texte-entete);
+  transition: var(--transition);
+}
+
+.liste-navigation a:hover,
+.liste-navigation a.actif {
+  color: var(--couleur-principale);
+}
+
+.bouton-theme {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--couleur-texte-entete);
+}
+
+.bouton-menu {
+  display: none;
+  background: none;
+  border: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.bouton-menu span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--couleur-texte-entete);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+/* Menu Mobile */
+@media (max-width: 768px) {
+  .bouton-menu {
+    display: flex;
+  }
+
+  .menu-navigation {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--couleur-entete);
+    box-shadow: var(--ombre);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+  }
+
+  .menu-navigation.ouvert {
+    max-height: 300px;
+  }
+
+  .liste-navigation {
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+/* ==========================================================================
+   3. SECTIONS COMMUNES ET ACCUEIL
+   ========================================================================== */
+section {
+  padding: 60px 0;
+}
+
+/* Bannière d'accueil */
+.banniere-accueil {
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+              url('../images/WhatsApp Image 2026-08-07 at 11.47.58_2.jpg') center/cover no-repeat;
+  color: #ffffff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.banniere-accueil h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.banniere-accueil p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Style du slogan non cliquable */
+.badge-slogan {
+  display: inline-block;
+  background-color: var(--couleur-accent);
+  color: #1b5e20;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 6px 16px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Section à fond secondaire */
+.chiffres-cles {
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-carte);
+}
+
+.grille-statistiques {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.carte-statistique {
+  background: var(--couleur-carte);
+  color: var(--couleur-texte-carte);
+  padding: 30px 20px;
+  border-radius: 8px;
+  box-shadow: var(--ombre);
+}
+
+.carte-statistique h3 {
+  font-size: 2.5rem;
+  color: var(--couleur-principale);
+  margin-bottom: 10px;
+}
+
+.grille-cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.carte-information {
+  background: var(--couleur-carte);
+  color: var(--couleur-texte-carte);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--ombre);
+  border: 1px solid var(--couleur-bordure);
+  transition: var(--transition);
+}
+
+.carte-information:hover {
+  transform: translateY(-5px);
+}
+
+.carte-information img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.corps-carte {
+  padding: 20px;
+}
+
+.corps-carte h3 {
+  margin-bottom: 10px;
+  color: var(--couleur-principale);
+}
+
+.corps-carte p {
+  color: var(--couleur-texte-secondaire);
+  margin-bottom: 15px;
+}
+
+.date-carte {
+  font-size: 0.85rem;
+  color: var(--couleur-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.section-appel-action {
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-carte);
+  text-align: center;
+}
+
+.section-appel-action h2 {
+  color: var(--couleur-principale);
+  margin-bottom: 15px;
+}
+
+.section-appel-action .bouton {
+  background-color: var(--couleur-accent);
+  color: #1e3f1a;
+}
+
+/* ==========================================================================
+   4. PAGE À PROPOS
+   ========================================================================== */
+.bloc-historique {
+  background: var(--couleur-secondaire);
+  color: var(--couleur-texte-carte);
+  padding: 30px;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.grille-piliers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.carte-pilier {
+  background: var(--couleur-carte);
+  color: var(--couleur-texte-carte);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: var(--ombre);
+  border-top: 4px solid var(--couleur-principale);
+}
+
+.membres-chicane {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.ligne-membre {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: var(--couleur-carte);
+  color: var(--couleur-texte-carte);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--ombre);
+}
+
+.ligne-membre:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.ligne-membre img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .ligne-membre, .ligne-membre:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   5. PAGE PRODUITS
+   ========================================================================== */
+.boutons-filtrage {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.bouton-filtre {
+  background: var(--couleur-secondaire);
+  border: 1px solid var(--couleur-bordure);
+  color: var(--couleur-texte-carte);
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.bouton-filtre.actif, .bouton-filtre:hover {
+  background: var(--couleur-accent);
+  color: #1e3f1a;
+}
+
+.conteneur-carrousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--ombre);
+}
+
+.diapositive-carrousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.element-carrousel {
+  min-width: 100%;
+  position: relative;
+}
+
+.element-carrousel img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+.legende-carrousel {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 15px;
+  text-align: center;
+}
+
+.bouton-carrousel-precedente, .bouton-carrousel-suivante {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #ffffff;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.bouton-carrousel-suivante { right: 10px; }
+.bouton-carrousel-precedente { left: 10px; }
+
+/* ==========================================================================
+   6. PAGE CONTACT
+   ========================================================================== */
+.grille-contact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.groupe-formulaire {
+  margin-bottom: 20px;
+}
+
+.groupe-formulaire label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--couleur-texte);
+}
+
+.groupe-formulaire input,
+.groupe-formulaire select,
+.groupe-formulaire textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--couleur-bordure);
+  border-radius: 6px;
+  background-color: var(--couleur-carte);
+  color: var(--couleur-texte-carte);
+  font-family: inherit;
+}
+
+.message-erreur {
+  color: #ff8a80;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: none;
+}
+
+.groupe-formulaire.erreur input,
+.groupe-formulaire.erreur textarea {
+  border-color: #ff8a80;
+}
+
+.statut-formulaire {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 15px;
+  display: none;
+}
+
+.statut-formulaire.succes {
+  background-color: #2e7d32;
+  color: #ffffff;
+  display: block;
+}
+
+/* ==========================================================================
+   7. PIED DE PAGE
+   ========================================================================== */
+footer {
+  background-color: var(--couleur-secondaire);
+  color: var(--couleur-texte-carte);
+  border-top: 1px solid var(--couleur-bordure);
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.contenu-pied-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.liens-pied-page {
+  display: flex;
+  gap: 20px;
+}
+
+.liens-pied-page a {
+  color: var(--couleur-texte-carte);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.liens-pied-page a:hover {
+  color: var(--couleur-principale);
+}
