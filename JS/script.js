@@ -1,196 +1,120 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* ==========================================================================
-     1. NAVIGATION RESPONSIVE (MENU HAMBURGER)
-     ========================================================================== */
-  const boutonMenu = document.querySelector(".bouton-menu");
-  const menuNavigation = document.querySelector(".menu-navigation");
+  const $ = (s, p = document) => p.querySelector(s);
+  const $$ = (s, p = document) => [...p.querySelectorAll(s)];
 
-  if (boutonMenu && menuNavigation) {
-    boutonMenu.addEventListener("click", () => {
-      const estOuvert = boutonMenu.getAttribute("aria-expanded") === "true";
-      boutonMenu.setAttribute("aria-expanded", !estOuvert);
-      menuNavigation.classList.toggle("ouvert");
-    });
+  //  NAVIGATION MOBILE //
+  $(".bouton-menu")?.addEventListener("click", (e) => {
+    const ouvert = e.currentTarget.getAttribute("aria-expanded") === "true";
+    e.currentTarget.setAttribute("aria-expanded", !ouvert);
+    $(".menu-navigation")?.classList.toggle("ouvert");
+  });
+
+  //  MODE SOMBRE-CLAIR //
+  const btnTheme = $("#bouton-theme");
+
+  const appliquerTheme = (estSombre) => {
+    if (estSombre) {
+      document.documentElement.setAttribute("data-theme", "sombre");
+      localStorage.setItem("theme", "sombre");
+      if (btnTheme) btnTheme.textContent = "☀️";
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", "clair");
+      if (btnTheme) btnTheme.textContent = "🌙";
+    }
+  };
+
+  // Initialisation au chargement //
+  const themeSauvegarde = localStorage.getItem("theme");
+  if (themeSauvegarde === "sombre") {
+    appliquerTheme(true);
+  } else {
+    appliquerTheme(false);
   }
 
-  /* ==========================================================================
-     2. BASCULE MODE SOMBRE / MODE CLAIR
-     ========================================================================== */
-  const boutonTheme = document.getElementById("bouton-theme");
-  const themeActuel = localStorage.getItem("theme") || "clair";
+  // Clic sur le bouton //
+  btnTheme?.addEventListener("click", () => {
+    const estActuellementSombre =
+      document.documentElement.getAttribute("data-theme") === "sombre";
+    appliquerTheme(!estActuellementSombre);
+  });
 
-  if (themeActuel === "sombre") {
-    document.documentElement.setAttribute("data-theme", "sombre");
-    if (boutonTheme) boutonTheme.textContent = "☀️";
-  }
-
-  if (boutonTheme) {
-    boutonTheme.addEventListener("click", () => {
-      let theme = document.documentElement.getAttribute("data-theme");
-      if (theme === "sombre") {
-        document.documentElement.removeAttribute("data-theme");
-        localStorage.setItem("theme", "clair");
-        boutonTheme.textContent = "🌙";
-      } else {
-        document.documentElement.setAttribute("data-theme", "sombre");
-        localStorage.setItem("theme", "sombre");
-        boutonTheme.textContent = "☀️";
-      }
-    });
-  }
-
-  /* ==========================================================================
-     3. CARROUSEL D'IMAGES (PAGE PRODUITS)
-     ========================================================================== */
-  const diapositiveCarrousel = document.querySelector(".diapositive-carrousel");
-  const elementsCarrousel = document.querySelectorAll(".element-carrousel");
-  const boutonPrecedente = document.querySelector(
-    ".bouton-carrousel-precedente",
-  );
-  const boutonSuivante = document.querySelector(".bouton-carrousel-suivante");
-
-  if (diapositiveCarrousel && elementsCarrousel.length > 0) {
-    let compteur = 0;
-    const taille = elementsCarrousel[0].clientWidth;
-
-    const mettreAJourCarrousel = () => {
-      diapositiveCarrousel.style.transform = `translateX(${-taille * compteur}px)`;
+  //  CARROUSEL //
+  const diapo = $(".diapositive-carrousel"),
+    el = $$(".element-carrousel");
+  if (diapo && el.length) {
+    let i = 0,
+      maj = () =>
+        (diapo.style.transform = `translateX(${-el[0].clientWidth * i}px)`);
+    const suiv = () => {
+      i = (i + 1) % el.length;
+      maj();
     };
-
-    if (boutonSuivante) {
-      boutonSuivante.addEventListener("click", () => {
-        compteur = compteur >= elementsCarrousel.length - 1 ? 0 : compteur + 1;
-        mettreAJourCarrousel();
-      });
-    }
-
-    if (boutonPrecedente) {
-      boutonPrecedente.addEventListener("click", () => {
-        compteur = compteur <= 0 ? elementsCarrousel.length - 1 : compteur - 1;
-        mettreAJourCarrousel();
-      });
-    }
-
-    // Défilement automatique
-    setInterval(() => {
-      compteur = compteur >= elementsCarrousel.length - 1 ? 0 : compteur + 1;
-      mettreAJourCarrousel();
-    }, 5000);
-  }
-
-  /* ==========================================================================
-     4. FILTRAGE DYNAMIQUE DES PRODUITS (PAGE PRODUITS)
-     ========================================================================== */
-  const boutonsFiltre = document.querySelectorAll(".bouton-filtre");
-  const cartesProduit = document.querySelectorAll(".carte-produit");
-
-  if (boutonsFiltre.length > 0) {
-    boutonsFiltre.forEach((bouton) => {
-      bouton.addEventListener("click", () => {
-        boutonsFiltre.forEach((btn) => btn.classList.remove("actif"));
-        bouton.classList.add("actif");
-
-        const valeurFiltre = bouton.getAttribute("data-filtre");
-
-        cartesProduit.forEach((carte) => {
-          if (
-            valeurFiltre === "tous" ||
-            carte.getAttribute("data-categorie") === valeurFiltre
-          ) {
-            carte.style.display = "block";
-          } else {
-            carte.style.display = "none";
-          }
-        });
-      });
+    $(".bouton-carrousel-suivante")?.addEventListener("click", suiv);
+    $(".bouton-carrousel-precedente")?.addEventListener("click", () => {
+      i = (i - 1 + el.length) % el.length;
+      maj();
     });
+    setInterval(suiv, 5000);
   }
 
-  /* ==========================================================================
-     5. VALIDATION DU FORMULAIRE DE CONTACT
-     ========================================================================== */
-  const formulaireContact = document.getElementById("formulaire-contact");
+  //  FILTRAGE PRODUITS //
+  const btnsFiltre = $$(".bouton-filtre");
+  btnsFiltre.forEach((b) =>
+    b.addEventListener("click", () => {
+      btnsFiltre.forEach((btn) => btn.classList.remove("actif"));
+      b.classList.add("actif");
+      const f = b.dataset.filtre;
+      $$(".carte-produit").forEach(
+        (c) =>
+          (c.style.display =
+            f === "tous" || c.dataset.categorie === f ? "block" : "none"),
+      );
+    }),
+  );
 
-  if (formulaireContact) {
-    formulaireContact.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let estValide = true;
+  // VOIR PLUS / VOIR MOINS (À propos) //
+  const btnPlus = $("#bouton-voir-plus");
+  btnPlus?.addEventListener("click", () => {
+    const o = btnPlus.dataset.ouvert === "true";
+    $$(".membre-cache").forEach((m) => m.classList.toggle("membre-cache", o));
+    btnPlus.dataset.ouvert = !o;
+    btnPlus.textContent = o ? "Voir plus" : "Voir moins";
+  });
 
-      // Champ Nom
-      const champNom = document.getElementById("nom");
-      const erreurNom = document.getElementById("erreur-nom");
-      if (!champNom.value.trim()) {
-        afficherErreur(champNom, erreurNom, "Le nom est obligatoire.");
-        estValide = false;
-      } else {
-        effacerErreur(champNom, erreurNom);
+  //FORMULAIRE DE CONTACT //
+  $("#formulaire-contact")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const test = (id, cond, msg) => {
+      const input = $(`#${id}`),
+        err = $(`#erreur-${id}`),
+        bad = cond(input.value.trim());
+      input.parentElement?.classList.toggle("erreur", bad);
+      if (err) {
+        err.textContent = bad ? msg : "";
+        err.style.display = bad ? "block" : "none";
       }
+      return !bad;
+    };
+    const ok = [
+      test("nom", (v) => !v, "Le nom est obligatoire."),
+      test(
+        "email",
+        (v) => !v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+        "Email invalide.",
+      ),
+      test("sujet", (v) => !v, "Veuillez sélectionner un sujet."),
+      test("message", (v) => !v, "Le message ne peut pas être vide."),
+    ].every(Boolean);
 
-      // Champ Email
-      const champEmail = document.getElementById("email");
-      const erreurEmail = document.getElementById("erreur-email");
-      const expressionEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!champEmail.value.trim()) {
-        afficherErreur(
-          champEmail,
-          erreurEmail,
-          "L'adresse email est obligatoire.",
-        );
-        estValide = false;
-      } else if (!expressionEmail.test(champEmail.value.trim())) {
-        afficherErreur(champEmail, erreurEmail, "Format d'email invalide.");
-        estValide = false;
-      } else {
-        effacerErreur(champEmail, erreurEmail);
-      }
-
-      // Champ Sujet
-      const champSujet = document.getElementById("sujet");
-      const erreurSujet = document.getElementById("erreur-sujet");
-      if (!champSujet.value) {
-        afficherErreur(
-          champSujet,
-          erreurSujet,
-          "Veuillez sélectionner un sujet.",
-        );
-        estValide = false;
-      } else {
-        effacerErreur(champSujet, erreurSujet);
-      }
-
-      // Champ Message
-      const champMessage = document.getElementById("message");
-      const erreurMessage = document.getElementById("erreur-message");
-      if (!champMessage.value.trim()) {
-        afficherErreur(
-          champMessage,
-          erreurMessage,
-          "Le message ne peut pas être vide.",
-        );
-        estValide = false;
-      } else {
-        effacerErreur(champMessage, erreurMessage);
-      }
-
-      // Validation finale
-      if (estValide) {
-        const zoneStatut = document.getElementById("statut-formulaire");
-        zoneStatut.className = "statut-formulaire succes";
-        zoneStatut.textContent =
+    if (ok) {
+      const st = $("#statut-formulaire");
+      if (st) {
+        st.className = "statut-formulaire succes";
+        st.textContent =
           "Votre message a été envoyé avec succès ! Nous vous répondrons sous peu.";
-        formulaireContact.reset();
       }
-    });
-
-    function afficherErreur(elementInput, elementErreur, message) {
-      elementInput.parentElement.classList.add("erreur");
-      elementErreur.textContent = message;
-      elementErreur.style.display = "block";
+      e.target.reset();
     }
-
-    function effacerErreur(elementInput, elementErreur) {
-      elementInput.parentElement.classList.remove("erreur");
-      elementErreur.style.display = "none";
-    }
-  }
+  });
 });

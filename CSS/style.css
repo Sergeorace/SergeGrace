@@ -1,6 +1,6 @@
-/* ==========================================================================
-   1. VARIABLES ET RÉINITIALISATION (Thème clair par défaut & Mode Sombre)
-   ========================================================================== */
+/* 1. VARIABLES ET RÉINITIALISATION (Thème clair par défaut & Mode Sombre) */
+   
+ 
 :root {
   /* Mode Clair */
   --couleur-fond: #2d5a27;            /* Vert agricole pour le body */
@@ -113,9 +113,9 @@ ul {
   color: var(--couleur-principale);
 }
 
-/* ==========================================================================
-   2. EN-TÊTE ET NAVIGATION
-   ========================================================================== */
+ 
+  /* 2. EN-TÊTE ET NAVIGATION */
+
 .entete {
   background-color: var(--couleur-entete);
   color: var(--couleur-texte-entete);
@@ -228,18 +228,19 @@ ul {
   }
 }
 
-/* ==========================================================================
-   3. SECTIONS COMMUNES ET ACCUEIL
-   ========================================================================== */
+ 
+  /* 3. SECTIONS COMMUNES ET ACCUEIL  */
+
 section {
   padding: 60px 0;
 }
 
 /* Bannière d'accueil */
 .banniere-accueil {
-  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-              url('../images/WhatsApp Image 2026-08-07 at 11.47.58_2.jpg') center/cover no-repeat;
+  background-image: url('../images/formation 1.jfif') center/cover no-repeat;
   color: #ffffff;
+  background-size: cover;
+  background-position: center;
   text-align: center;
   padding: 100px 20px;
 }
@@ -265,7 +266,7 @@ section {
   background-color: var(--couleur-accent);
   color: #1b5e20;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.8rem;
   padding: 6px 16px;
   border-radius: 50px;
   text-transform: uppercase;
@@ -274,6 +275,7 @@ section {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   user-select: none;
   pointer-events: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Section à fond secondaire */
@@ -366,9 +368,9 @@ section {
   color: #1e3f1a;
 }
 
-/* ==========================================================================
-   4. PAGE À PROPOS
-   ========================================================================== */
+
+  /* 4. PAGE À PROPOS */
+   
 .bloc-historique {
   background: var(--couleur-secondaire);
   color: var(--couleur-texte-carte);
@@ -397,6 +399,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 40px;
+  align-items: center;
 }
 
 .ligne-membre {
@@ -408,6 +411,8 @@ section {
   padding: 20px;
   border-radius: 8px;
   box-shadow: var(--ombre);
+  width: 100%;
+  animation: apparition 0.4s ease-in-out;
 }
 
 .ligne-membre:nth-child(even) {
@@ -421,16 +426,53 @@ section {
   border-radius: 50%;
 }
 
+/* Style du bouton voir plus dans la section membres */
+.membres-chicane button,
+.membres-chicane .bouton {
+  align-self: center;
+  margin-top: 10px;
+  background-color: var(--couleur-accent);
+  color: #1e3f1a;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+}
+
+.membres-chicane button:hover,
+.membres-chicane .bouton:hover {
+  background-color: #f57f17;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Masquage des membres supplémentaires */
+.membre-cache {
+  display: none !important;
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 768px) {
   .ligne-membre, .ligne-membre:nth-child(even) {
     flex-direction: column;
     text-align: center;
   }
 }
-
-/* ==========================================================================
-   5. PAGE PRODUITS
-   ========================================================================== */
+ 
+/*  PAGE PRODUITS */
+   
 .boutons-filtrage {
   display: flex;
   justify-content: center;
@@ -506,12 +548,12 @@ section {
 .bouton-carrousel-suivante { right: 10px; }
 .bouton-carrousel-precedente { left: 10px; }
 
-/* ==========================================================================
-   6. PAGE CONTACT
-   ========================================================================== */
+ 
+  /*  PAGE CONTACT  */
+  
 .grille-contact {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
@@ -563,9 +605,9 @@ section {
   display: block;
 }
 
-/* ==========================================================================
-   7. PIED DE PAGE
-   ========================================================================== */
+ 
+  /* 7. PIED DE PAGE  */
+  
 footer {
   background-color: var(--couleur-secondaire);
   color: var(--couleur-texte-carte);
