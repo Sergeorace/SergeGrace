@@ -1,148 +1,144 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AGRI-TOGO — Nos Produits</title>
-    <link rel="stylesheet" href="CSS/style.css" />
-  </head>
-  <body>
-    <header class="entete">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGRI-TOGO — Nos Produits</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+
+<body>
+  <header class="entete">
+    <div class="conteneur">
+      <div class="logo-marque">
+        <img src="images/logo.png" alt="Logo AGRI-TOGO" />
+        <h3>AGRI-TOGO</h3>
+      </div>
+      <div class="commandes-navigation">
+        <nav class="menu-navigation">
+          <ul class="liste-navigation">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="produits.html" class="actif">Nos Produits</a></li>
+            <li><a href="actualites.html">Actualités</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="bouton-theme" class="bouton-theme" aria-label="Changer de thème">
+          🌙
+        </button>
+        <button class="bouton-menu" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
       <div class="conteneur">
-        <div class="logo-marque">
-          <img src="images/logo.png" alt="Logo AGRI-TOGO" />
-          <h3>AGRI-TOGO</h3>
+        <h2 class="titre-section">Produits à la une</h2>
+
+        <!-- Carrousel -->
+        <div class="conteneur-carrousel">
+          <div class="diapositive-carrousel">
+            <div class="element-carrousel">
+              <img src="images/mais 2.jfif" alt="Maïs local" />
+              <div class="legende-carrousel">
+                <h3>Maïs Grain Extra Sec</h3>
+              </div>
+            </div>
+            <div class="element-carrousel">
+              <img src="images/ananas.jfif" alt="Ananas Bio" />
+              <div class="legende-carrousel">
+                <h3>Ananas Pain de Sucre</h3>
+              </div>
+            </div>
+            <div class="element-carrousel">
+              <img src="images/Gari.jpg" alt="Gari Sohou" />
+              <div class="legende-carrousel">
+                <h3>Gari Supérieur Enrichi</h3>
+              </div>
+            </div>
+          </div>
+          <button class="bouton-carrousel-precedente" aria-label="Précédent">
+            &#10094;
+          </button>
+          <button class="bouton-carrousel-suivante" aria-label="Suivant">
+            &#10095;
+          </button>
         </div>
-        <div class="commandes-navigation">
-          <nav class="menu-navigation">
-            <ul class="liste-navigation">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="APropos.html">À propos</a></li>
-              <li><a href="Produits.html" class="actif">Nos Produits</a></li>
-              <li><a href="Actualites.html">Actualités</a></li>
-              <li><a href="Contact.html">Contact</a></li>
-            </ul>
-          </nav>
-          <button
-            id="bouton-theme"
-            class="bouton-theme"
-            aria-label="Changer de thème"
-          >
-            🌙
+
+        <h2 class="titre-section">Notre Galerie de Produits</h2>
+
+        <!-- Boutons de filtrage -->
+        <div class="boutons-filtrage">
+          <button class="bouton-filtre actif" data-filtre="tous">Tous</button>
+          <button class="bouton-filtre" data-filtre="brut">
+            Produits Bruts
           </button>
-          <button
-            class="bouton-menu"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-          >
-            <span></span><span></span><span></span>
+          <button class="bouton-filtre" data-filtre="transforme">
+            Produits Transformés
           </button>
+        </div>
+
+        <!-- Galerie Grille -->
+        <div class="grille-cartes">
+          <div class="carte-information carte-produit" data-categorie="brut">
+            <img src="images/mais 3.jfif" alt="Maïs" />
+            <div class="corps-carte">
+              <h3>MaïsBlanc</h3>
+              <p>Riche en nutriments, séché naturellement au soleil.</p>
+            </div>
+          </div>
+          <div class="carte-information carte-produit" data-categorie="brut">
+            <img src="images/manioc 2.jfif" alt="Manioc" />
+            <div class="corps-carte">
+              <h3>Tubercules de Manioc</h3>
+              <p>Récoltés à maturité optimale dans la région Maritime.</p>
+            </div>
+          </div>
+          <div class="carte-information carte-produit" data-categorie="brut">
+            <img src="images/ananas.jfif" alt="Ananas" />
+            <div class="corps-carte">
+              <h3>Ananas Biologique</h3>
+              <p>Variété Pain de Sucre au goût très sucré et jus abondant.</p>
+            </div>
+          </div>
+          <div class="carte-information carte-produit" data-categorie="transforme">
+            <img src="images/gari 2.jfif" alt="Gari" />
+            <div class="corps-carte">
+              <h3>Gari Super fin</h3>
+              <p>Farine de manioc torréfiée de façon artisanale.</p>
+            </div>
+          </div>
+          <div class="carte-information carte-produit" data-categorie="transforme">
+            <img src="images/jus 2.jfif" alt="Jus d'Ananas" />
+            <div class="corps-carte">
+              <h3>Jus d'Ananas Naturel</h3>
+              <p>100% pur jus, sans conservateurs ni sucres ajoutés.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
+    </section>
+  </main>
 
-    <main>
-      <section>
-        <div class="conteneur">
-          <h2 class="titre-section">Produits à la une</h2>
+  <footer>
+    <div class="conteneur contenu-pied-page">
+      <p>&copy; 2026 AGRI-TOGO. Tous droits réservés.</p>
+      <ul class="liens-pied-page">
+        <li><a href="index.html" class="actif">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="produits.html">Nos Produits</a></li>
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
 
-          <!-- Carrousel -->
-          <div class="conteneur-carrousel">
-            <div class="diapositive-carrousel">
-              <div class="element-carrousel">
-                <img src="images/mais 2.jfif" alt="Maïs local" />
-                <div class="legende-carrousel">
-                  <h3>Maïs Grain Extra Sec</h3>
-                </div>
-              </div>
-              <div class="element-carrousel">
-                <img src="images/ananas.jfif" alt="Ananas Bio" />
-                <div class="legende-carrousel">
-                  <h3>Ananas Pain de Sucre</h3>
-                </div>
-              </div>
-              <div class="element-carrousel">
-                <img src="images/gari.jfif" alt="Gari Sohou" />
-                <div class="legende-carrousel">
-                  <h3>Gari Supérieur Enrichi</h3>
-                </div>
-              </div>
-            </div>
-            <button class="bouton-carrousel-precedente" aria-label="Précédent">
-              &#10094;
-            </button>
-            <button class="bouton-carrousel-suivante" aria-label="Suivant">
-              &#10095;
-            </button>
-          </div>
+  <script src="JS/script.js" defer></script>
+</body>
 
-          <h2 class="titre-section">Notre Galerie de Produits</h2>
-
-          <!-- Boutons de filtrage -->
-          <div class="boutons-filtrage">
-            <button class="bouton-filtre actif" data-filtre="tous">Tous</button>
-            <button class="bouton-filtre" data-filtre="brut">
-              Produits Bruts
-            </button>
-            <button class="bouton-filtre" data-filtre="transforme">
-              Produits Transformés
-            </button>
-          </div>
-
-          <!-- Galerie Grille -->
-          <div class="grille-cartes">
-            <div class="carte-information carte-produit" data-categorie="brut">
-              <img src="images/manioc 3.jfif" alt="Maïs" />
-              <div class="corps-carte">
-                <h3>Maïs Jaune & Blanc</h3>
-                <p>Riche en nutriments, séché naturellement au soleil.</p>
-              </div>
-            </div>
-            <div class="carte-information carte-produit" data-categorie="brut">
-              <img src="images/manioc 2.jfif" alt="Manioc" />
-              <div class="corps-carte">
-                <h3>Tubercules de Manioc</h3>
-                <p>Récoltés à maturité optimale dans la région Maritime.</p>
-              </div>
-            </div>
-            <div class="carte-information carte-produit" data-categorie="brut">
-              <img src="images/ananas.jfif" alt="Ananas" />
-              <div class="corps-carte">
-                <h3>Ananas Biologique</h3>
-                <p>Variété Pain de Sucre au goût très sucré et jus abondant.</p>
-              </div>
-            </div>
-            <div
-              class="carte-information carte-produit"
-              data-categorie="transforme"
-            >
-              <img src="images/gari 2.jfif" alt="Gari" />
-              <div class="corps-carte">
-                <h3>Gari Super fin</h3>
-                <p>Farine de manioc torréfiée de façon artisanale.</p>
-              </div>
-            </div>
-            <div
-              class="carte-information carte-produit"
-              data-categorie="transforme"
-            >
-              <img src="images/jus 2.jfif" alt="Jus d'Ananas" />
-              <div class="corps-carte">
-                <h3>Jus d'Ananas Naturel</h3>
-                <p>100% pur jus, sans conservateurs ni sucres ajoutés.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="conteneur contenu-pied-page">
-        <p>&copy; 2026 AGRI-TOGO. Tous droits réservés.</p>
-      </div>
-    </footer>
-
-    <script src="js/script.js" defer></script>
-  </body>
 </html>

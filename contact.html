@@ -1,131 +1,118 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AGRI-TOGO — Contact</title>
-    <link rel="stylesheet" href="CSS/style.css" />
-  </head>
-  <body>
-    <header class="entete">
-      <div class="conteneur">
-        <div class="logo-marque">
-          <img src="images/logo.png" alt="Logo AGRI-TOGO" />
-          <h3>AGRI-TOGO</h3>
-        </div>
-        <div class="commandes-navigation">
-          <nav class="menu-navigation">
-            <ul class="liste-navigation">
-              <li><a href="index.html">Accueil</a></li>
-              <li><a href="APropos.html">À propos</a></li>
-              <li><a href="Produits.html">Nos Produits</a></li>
-              <li><a href="Actualites.html">Actualités</a></li>
-              <li><a href="Contact.html" class="actif">Contact</a></li>
-            </ul>
-          </nav>
-          <button
-            id="bouton-theme"
-            class="bouton-theme"
-            aria-label="Changer de thème"
-          >
-            🌙
-          </button>
-          <button
-            class="bouton-menu"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-          >
-            <span></span><span></span><span></span>
-          </button>
-        </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGRI-TOGO — Contact</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+
+<body>
+  <header class="entete">
+    <div class="conteneur">
+      <div class="logo-marque">
+        <img src="images/logo.png" alt="Logo AGRI-TOGO" />
+        <h3>AGRI-TOGO</h3>
       </div>
-    </header>
+      <div class="commandes-navigation">
+        <nav class="menu-navigation">
+          <ul class="liste-navigation">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="produits.html">Nos Produits</a></li>
+            <li><a href="actualites.html">Actualités</a></li>
+            <li><a href="contact.html" class="actif">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="bouton-theme" class="bouton-theme" aria-label="Changer de thème">
+          🌙
+        </button>
+        <button class="bouton-menu" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-    <main>
-      <section>
-        <div class="conteneur">
-          <h2 class="titre-section">Contactez-nous</h2>
+  <main>
+    <section>
+      <div class="conteneur">
+        <h2 class="titre-section">Contactez-nous</h2>
 
-          <div class="grille-contact">
-            <!-- Formulaire -->
-            <div>
-              <form id="formulaire-contact" novalidate>
-                <div class="groupe-formulaire">
-                  <label for="nom">Nom complet *</label>
-                  <input
-                    type="text"
-                    id="nom"
-                    name="nom"
-                    placeholder="Votre nom"
-                  />
-                  <span class="message-erreur" id="erreur-nom"></span>
-                </div>
+        <div class="grille-contact">
+          <!-- Formulaire -->
+          <div>
+            <form id="formulaire-contact" novalidate>
+              <div class="groupe-formulaire">
+                <label for="nom">Nom complet *</label>
+                <input type="text" id="nom" name="nom" placeholder="Votre nom" />
+                <span class="message-erreur" id="erreur-nom"></span>
+              </div>
 
-                <div class="groupe-formulaire">
-                  <label for="email">Adresse Email *</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="exemple@domaine.com"
-                  />
-                  <span class="message-erreur" id="erreur-email"></span>
-                </div>
+              <div class="groupe-formulaire">
+                <label for="email">Adresse Email *</label>
+                <input type="email" id="email" name="email" placeholder="exemple@domaine.com" />
+                <span class="message-erreur" id="erreur-email"></span>
+              </div>
 
-                <div class="groupe-formulaire">
-                  <label for="sujet">Sujet *</label>
-                  <select id="sujet" name="sujet">
-                    <option value="">-- Choisissez un sujet --</option>
-                    <option value="achat">Achat de produits</option>
-                    <option value="partenariat">Partenariat / ONG</option>
-                    <option value="adhesion">Rejoindre la coopérative</option>
-                    <option value="autre">Autre demande</option>
-                  </select>
-                  <span class="message-erreur" id="erreur-sujet"></span>
-                </div>
+              <div class="groupe-formulaire">
+                <label for="sujet">Sujet *</label>
+                <select id="sujet" name="sujet">
+                  <option value="">-- Choisissez un sujet --</option>
+                  <option value="achat">Achat de produits</option>
+                  <option value="partenariat">Partenariat / ONG</option>
+                  <option value="adhesion">Rejoindre la coopérative</option>
+                  <option value="autre">Autre demande</option>
+                </select>
+                <span class="message-erreur" id="erreur-sujet"></span>
+              </div>
 
-                <div class="groupe-formulaire">
-                  <label for="message">Message *</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Votre message..."
-                  ></textarea>
-                  <span class="message-erreur" id="erreur-message"></span>
-                </div>
+              <div class="groupe-formulaire">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="5" placeholder="Votre message..."></textarea>
+                <span class="message-erreur" id="erreur-message"></span>
+              </div>
 
-                <button type="submit" class="bouton">Envoyer le message</button>
-                <div id="statut-formulaire" class="statut-formulaire"></div>
-              </form>
-            </div>
+              <button type="submit" class="bouton">Envoyer le message</button>
+              <div id="statut-formulaire" class="statut-formulaire"></div>
+            </form>
+          </div>
 
-            <!-- Coordonnées -->
-            <div class="bloc-historique">
-              <h3>Nos Coordonnées</h3>
-              <p style="margin-top: 15px">
-                <strong>Siège social :</strong> Lomé, Quartier Hedzranawoé,
-                Togo[cite: 1]
-              </p>
-              <p>
-                <strong>Téléphone :</strong> +228 90 00 00 00 / +228 99 00 00 00
-              </p>
-              <p><strong>Email :</strong> contact@agritogo.tg</p>
-              <p>
-                <strong>Heures d'ouverture :</strong> Lun - Ven : 08h00 - 17h30
-              </p>
-            </div>
+          <!-- Coordonnées -->
+          <div class="bloc-historique">
+            <h3>Nos Coordonnées</h3>
+            <p style="margin-top: 15px">
+              <strong>Siège social :</strong> Lomé, Quartier Hedzranawoé,
+              Togo
+            </p>
+            <p>
+              <strong>Téléphone :</strong> +228 90 00 00 00 / +228 99 00 00 00
+            </p>
+            <p><strong>Email :</strong> contact@agritogo.tg</p>
+            <p>
+              <strong>Heures d'ouverture :</strong> Lun - Ven : 08h00 - 17h30
+            </p>
           </div>
         </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="conteneur contenu-pied-page">
-        <p>&copy; 2026 AGRI-TOGO. Tous droits réservés.</p>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <script src="js/script.js" defer></script>
-  </body>
+  <footer>
+    <div class="conteneur contenu-pied-page">
+      <p>&copy; 2026 AGRI-TOGO. Tous droits réservés.</p>
+      <ul class="liens-pied-page">
+        <li><a href="index.html" class="actif">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="produits.html">Nos Produits</a></li>
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="JS/script.js" defer></script>
+</body>
+
 </html>

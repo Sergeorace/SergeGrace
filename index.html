@@ -1,154 +1,156 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AGRI-TOGO — Accueil</title>
-    <link rel="stylesheet" href="CSS/style.css" />
-  </head>
-  <body>
-    <header class="entete">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGRI-TOGO — Accueil</title>
+  <link rel="stylesheet" href="CSS/style.css" />
+</head>
+
+<body>
+  <header class="entete">
+    <div class="conteneur">
+      <div class="logo-marque">
+        <img src="images/logo.png" alt="Logo AGRI-TOGO" />
+        <h3>AGRI-TOGO</h3>
+      </div>
+      <div class="commandes-navigation">
+        <nav class="menu-navigation">
+          <ul class="liste-navigation">
+            <li><a href="index.html" class="actif">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="produits.html">Nos Produits</a></li>
+            <li><a href="actualites.html">Actualités</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button id="bouton-theme" class="bouton-theme" aria-label="Changer de thème">🌙
+
+        </button>
+        <button class="bouton-menu" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Bannière d'accueil -->
+    <section class="banniere-accueil">
       <div class="conteneur">
-        <div class="logo-marque">
-          <img src="images/logo.png" alt="Logo AGRI-TOGO" />
-          <h3>AGRI-TOGO</h3>
-        </div>
-        <div class="commandes-navigation">
-          <nav class="menu-navigation">
-            <ul class="liste-navigation">
-              <li><a href="index.html" class="actif">Accueil</a></li>
-              <li><a href="APropos.html">À propos</a></li>
-              <li><a href="Produits.html">Nos Produits</a></li>
-              <li><a href="Actualites.html">Actualités</a></li>
-              <li><a href="Contact.html">Contact</a></li>
-            </ul>
-          </nav>
-          <button
-            id="bouton-theme"
-            class="bouton-theme"
-            aria-label="Changer de thème"
-          >
-            🌙
-          </button>
-          <button
-            class="bouton-menu"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-          >
-            <span></span><span></span><span></span>
-          </button>
-        </div>
+        <!-- Slogan sous forme de badge/bouton non cliquable -->
+
+
+        <h1>Au cœur de la terre, au service des producteurs</h1>
+        <p>AGRI-TOGO est une coopérative agricole (fictive, à usage pédagogique) regroupant des producteurs de la région
+          Maritime
+          et des Plateaux au Togo. Elle valorise des produits locaux — maïs, manioc, ananas, ainsi que des produits
+          transformés
+          (farines, jus, gari) — et accompagne ses membres dans la commercialisation et la formation aux bonnes
+          pratiques
+          agricoles.
+        </p>
+        <span class="badge-slogan">Cultivez l'avenir, nourrir le Togo</span>
+
       </div>
-    </header>
-
-    <main>
-      <!-- Bannière d'accueil -->
-      <<section class="banniere-accueil">
-        <div class="conteneur">
-            <!-- Slogan sous forme de badge/bouton non cliquable -->
-           
-    
-            <h1>Au cœur de la terre, au service des producteurs</h1>
-            <p>La coopérative agricole togolaise au service d'une agriculture durable, moderne et rémunératrice.</p>
-             <span class="badge-slogan">Cultivez l'avenir, nourrir le Togo</span>
-
-        </div>
     </section>
-          
-      </section>
 
-      <!-- Chiffres Clés -->
-      <section class="chiffres-cles">
-        <div class="conteneur">
-          <h2 class="titre-section">Chiffres Clés</h2>
-          <div class="grille-statistiques">
-            <div class="carte-statistique">
-              <h3>+550</h3>
-              <p>Membres producteurs</p>
-            </div>
-            <div class="carte-statistique">
-              <h3>2</h3>
-              <p>Régions couvertes (Maritime & Plateaux)</p>
-            </div>
-            <div class="carte-statistique">
-              <h3>12</h3>
-              <p>Produits locaux & transformés</p>
-            </div>
-            <div class="carte-statistique">
-              <h3>15</h3>
-              <p>Formations dispensées / an</p>
-            </div>
+    </section>
+
+    <!-- Chiffres Clés -->
+    <section class="chiffres-cles">
+      <div class="conteneur">
+        <h2 class="titre-section">Chiffres Clés</h2>
+        <div class="grille-statistiques">
+          <div class="carte-statistique">
+            <h3>+550</h3>
+            <p>Membres et producteurs</p>
+          </div>
+          <div class="carte-statistique">
+            <h3>2</h3>
+            <p>Régions couvertes (Maritime & Plateaux)</p>
+          </div>
+          <div class="carte-statistique">
+            <h3>12</h3>
+            <p>Produits locaux & transformés</p>
+          </div>
+          <div class="carte-statistique">
+            <h3>15</h3>
+            <p>Formations dispensées / an</p>
           </div>
         </div>
-      </section>
-
-      <!-- Aperçu des Actualités -->
-      <section class="apercu-actualites">
-        <div class="conteneur">
-          <h2 class="titre-section">Dernières Actualités</h2>
-          <div class="grille-cartes">
-            <article class="carte-information">
-              <img src="images/foire.brief.jpeg" alt="Foire Agricole" />
-              <div class="corps-carte">
-                <span class="date-carte">12 Février 2026</span>
-                <h3>Participation à la Foire Nationale de Lomé</h3>
-                <p>
-                  AGRI-TOGO a exposé ses produits transformés lors de la 18e
-                  édition de la foire agricole.
-                </p>
-              </div>
-            </article>
-            <article class="carte-information">
-              <img src="images/formation 2.jfif" alt="Formation" />
-              <div class="corps-carte">
-                <span class="date-carte">28 Janvier 2026</span>
-                <h3>Formation sur les techniques d'irrigation</h3>
-                <p>
-                  Plus de 40 producteurs ont participé à notre atelier pratique
-                  dans la région des Plateaux.
-                </p>
-              </div>
-            </article>
-            <article class="carte-information">
-              <img src="images/ananas.jfif" alt="Récolte" />
-              <div class="corps-carte">
-                <span class="date-carte">15 Janvier 2026</span>
-                <h3>Lancement de la grande récolte d'Ananas</h3>
-                <p>
-                  Nos coopérateurs de Kpalimé débutent la récolte annuelle
-                  d'ananas biologiques.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Appel à l'action -->
-      <section class="section-appel-action">
-        <div class="conteneur">
-          <h2>Vous souhaitez devenir partenaire ou nous rejoindre ?</h2>
-          <p style="margin-bottom: 20px">
-            Découvrez nos opportunités d'accompagnement et de commercialisation.
-          </p>
-          <a href="Contact.html" class="bouton"
-            >Contactez-nous dès aujourd'hui</a
-          >
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="conteneur contenu-pied-page">
-        <p>&copy; 2026 AGRI-TOGO. Tous droits réservés.</p>
-        <ul class="liens-pied-page">
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Politique de confidentialité</a></li>
-          <li><a href="#">Plan du site</a></li>
-        </ul>
       </div>
-    </footer>
+    </section>
 
-    <script src="js/script.js" defer></script>
-  </body>
+    <!-- Aperçu des Actualités -->
+    <section class="apercu-actualites">
+      <div class="conteneur">
+        <h2 class="titre-section">Dernières Actualités</h2>
+        <div class="grille-cartes">
+          <article class="carte-information">
+            <img src="images/foire.brief.jpeg" alt="Foire Agricole" />
+            <div class="corps-carte">
+              <span class="date-carte">12 Février 2026</span>
+              <h3>Participation à la Foire Nationale de Lomé</h3>
+              <p>
+                AGRI-TOGO a exposé ses produits transformés lors de la 18e
+                édition de la foire agricole.
+              </p>
+            </div>
+          </article>
+          <article class="carte-information">
+            <img src="images/formation 2.jfif" alt="Formation" />
+            <div class="corps-carte">
+              <span class="date-carte">28 Janvier 2026</span>
+              <h3>Formation sur les techniques d'irrigation</h3>
+              <p>
+                Plus de 40 producteurs ont participé à notre atelier pratique
+                dans la région des Plateaux.
+              </p>
+            </div>
+          </article>
+          <article class="carte-information">
+            <img src="images/ananas.jfif" alt="Récolte" />
+            <div class="corps-carte">
+              <span class="date-carte">15 Janvier 2026</span>
+              <h3>Lancement de la grande récolte d'Ananas</h3>
+              <p>
+                Nos coopérateurs de Kpalimé débutent la récolte annuelle
+                d'ananas biologiques.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Appel à l'action -->
+    <section class="section-appel-action">
+      <div class="conteneur">
+        <h2>Vous souhaitez devenir partenaire ou nous rejoindre ?</h2>
+        <p style="margin-bottom: 20px">
+          Découvrez nos opportunités d'accompagnement et de commercialisation.
+        </p>
+        <a href="contact.html" class="bouton">Contactez-nous dès aujourd'hui</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="conteneur contenu-pied-page">
+      <p>&copy; 2026 AGRI-TOGO. Tous droits réservés.</p>
+      <ul class="liens-pied-page">
+        <li><a href="index.html" class="actif">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="produits.html">Nos Produits</a></li>
+        <li><a href="actualites.html">Actualités</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="JS/script.js" defer></script>
+</body>
+
 </html>
