@@ -85,10 +85,10 @@ Le site est structuré de manière fluide et responsive autour de 5 pages princi
 
 ## 🚀 Installation & Démarrage
 
-1. **Cloner le dépôt :**
+ **Cloner le dépôt :**
    ```bash
-   git clone https://github.com/votre-compte/agri-togo.git
-   cd agri-togo
+   https://github.com/Sergeorace/SergeGrace.git
+   cd SergeGrace
    ```
 ---
 
